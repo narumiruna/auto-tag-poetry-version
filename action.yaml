@@ -14,3 +14,4 @@ runs:
   args:
     - ${{ inputs.version-prefix }}
     - ${{ inputs.github-token }}
+    - ${{ github.repository }}

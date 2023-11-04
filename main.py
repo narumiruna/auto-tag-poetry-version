@@ -8,7 +8,8 @@ from poetry.console.application import Application
 @click.command()
 @click.argument("prefix")
 @click.argument("token")
-def main(prefix, token):
+@click.argument("repo")
+def main(prefix, token, repo):
     version = Application().poetry.package.pretty_version
     print("version:", version)
 
@@ -19,13 +20,10 @@ def main(prefix, token):
         print("GITHUB_TOKEN not set, skipping tag creation")
         return
 
-    github_repo = os.getenv("GITHUB_REPOSITORY")
-    if github_repo is None:
-        print("GITHUB_REPOSITORY not set, skipping tag creation")
-        return
+    print(f"repo: {repo}")
 
     g = Github(token)
-    repo = g.get_repo(github_repo)
+    repo = g.get_repo(repo)
 
     for tag in repo.get_tags():
         if tag.name == version_tag:
