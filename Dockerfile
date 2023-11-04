@@ -5,4 +5,4 @@ RUN pip install poetry PyGithub click
 WORKDIR /workspace
 COPY main.py main.py
 
-CMD [ "python3", "/workspace/main.py" ]
+ENTRYPOINT [ "python3", "/workspace/main.py" ]
