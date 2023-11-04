@@ -1,13 +1,15 @@
 # auto-tag-version
 
 ```yaml
-name: Auto Tag Version From Poetry
+name: Auto Tag Version
 
 on:
   push:
 
 jobs:
   tag:
+    permissions:
+        contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
