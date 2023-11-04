@@ -18,7 +18,7 @@ def main():
         return
 
     g = Github(token)
-    repo = g.get_repo(os.environ["github"]["repository"])
+    repo = g.get_repo(os.getenv("GITHUB_REPOSITORY"))
 
     for tag in repo.get_tags():
         if tag.name == version_tag:
