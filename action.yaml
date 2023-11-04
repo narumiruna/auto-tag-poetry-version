@@ -13,7 +13,7 @@ inputs:
     required: true
 runs:
   using: docker
-  image: narumi/auto-tag-version:latest
+  image: docker://narumi/auto-tag-version:latest
   args:
     - ${{ inputs.version-prefix }}
     - ${{ inputs.github-token }}
