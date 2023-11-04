@@ -2,9 +2,6 @@
 name: "Auto Tag Version"
 description: ""
 inputs:
-  poetry-version:
-    description: ""
-    default: "1.6.1"
   version-prefix:
     description: ""
     default: "v"
@@ -15,6 +12,5 @@ runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.poetry-version }}
     - ${{ inputs.version-prefix }}
     - ${{ inputs.github-token }}

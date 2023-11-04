@@ -1,20 +1,22 @@
 import os
 
+import click
 from github import Github
 from poetry.console.application import Application
 
 
-def main():
+@click.command()
+@click.argument("prefix")
+@click.argument("token")
+def main(prefix, token):
     version = Application().poetry.package.pretty_version
     print("version:", version)
-
-    prefix = os.getenv("INPUT_VERSION_PREFIX")
 
     version_tag = f"{prefix}{version}"
     print("version_tag:", version_tag)
 
-    token = os.getenv("INPUT_GITHUB_TOKEN")
     if token is None:
+        print("GITHUB_TOKEN not set, skipping tag creation")
         return
 
     github_repo = os.getenv("GITHUB_REPOSITORY")
