@@ -5,9 +5,7 @@ from poetry.console.application import Application
 
 
 def main():
-    app = Application()
-
-    version = app.poetry.package.pretty_version
+    version = Application().poetry.package.pretty_version
 
     prefix = os.getenv("INPUT_VERSION_PREFIX")
 

@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN pip install poetry pygithub
+RUN pip install poetry PyGithub
 
 COPY main.py main.py
 
