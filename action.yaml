@@ -1,0 +1,14 @@
+# action.yml
+name: 'Auto Tag Version'
+description: ''
+inputs:
+  poetry-version:
+    description: ''
+    default: '1.6.1'
+runs:
+  using: 'composite'
+  steps:
+    - run: pip install poetry==${{ inputs.poetry-version }}
+      shell: bash
+    - run: python main.py
+      shell: bash
