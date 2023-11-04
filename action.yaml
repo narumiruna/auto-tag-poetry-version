@@ -1,14 +1,19 @@
 # action.yml
-name: 'Auto Tag Version'
-description: ''
+name: "Auto Tag Version"
+description: ""
 inputs:
   poetry-version:
-    description: ''
-    default: '1.6.1'
+    description: ""
+    default: "1.6.1"
+  version-prefix:
+    description: ""
+    default: "v"
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - run: pip install poetry==${{ inputs.poetry-version }}
+    - run: |
+        pip install poetry==${{ inputs.poetry-version }}
+        pip install PyGithub
       shell: bash
     - run: python main.py
       shell: bash
