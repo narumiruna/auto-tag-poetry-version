@@ -8,10 +8,13 @@ inputs:
   github-token:
     description: ""
     required: true
+  github-repository:
+    description: ""
+    required: true
 runs:
   using: docker
   image: Dockerfile
   args:
     - ${{ inputs.version-prefix }}
     - ${{ inputs.github-token }}
-    - ${{ github.repository }}
+    - ${{ inputs.github-repository }}
