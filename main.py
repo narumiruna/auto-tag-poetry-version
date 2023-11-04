@@ -17,8 +17,10 @@ def main():
     if token is None:
         return
 
+    github_repo = os.getenv("GITHUB_REPOSITORY")
+
     g = Github(token)
-    repo = g.get_repo(os.getenv("GITHUB_REPOSITORY"))
+    repo = g.get_repo(github_repo)
 
     for tag in repo.get_tags():
         if tag.name == version_tag:
