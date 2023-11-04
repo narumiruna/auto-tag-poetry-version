@@ -1,1 +1,1 @@
-# auto-tag-poetry-version
+# auto-tag-version
