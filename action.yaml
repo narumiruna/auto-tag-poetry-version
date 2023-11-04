@@ -11,15 +11,10 @@ inputs:
   github-token:
     description: ""
     required: true
-# runs:
-#   using: "composite"
-#   steps:
-#     - run: |
-#         pip install poetry==${{ inputs.poetry-version }}
-#         pip install PyGithub
-#       shell: bash
-#     - run: python main.py
-#       shell: bash
 runs:
   using: docker
   image: Dockerfile
+  args:
+    - ${{ inputs.poetry-version }}
+    - ${{ inputs.version-prefix }}
+    - ${{ inputs.github-token }}
