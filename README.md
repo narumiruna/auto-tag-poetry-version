@@ -1,7 +1,7 @@
 # auto-tag-version
 
 ```yaml
-name: Auto Tag Version
+name: Auto Tag Version From Poetry
 
 on:
   push:
@@ -14,4 +14,5 @@ jobs:
       - uses: narumiruna/auto-tag-version@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repository: ${{ github.repository }}
 ```
