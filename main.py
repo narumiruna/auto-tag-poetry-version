@@ -8,7 +8,11 @@ from poetry.console.application import Application
 @click.argument("token")
 @click.argument("repo")
 def main(prefix, token, repo):
-    version = Application().poetry.package.pretty_version
+    try:
+        version = Application().poetry.package.pretty_version
+    except RuntimeError as e:
+        print(e)
+        return
 
     version_tag = f"{prefix}{version}"
 
