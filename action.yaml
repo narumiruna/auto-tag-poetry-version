@@ -8,6 +8,9 @@ inputs:
   version-prefix:
     description: ""
     default: "v"
+  github-token:
+    description: ""
+    required: true
 # runs:
 #   using: "composite"
 #   steps:
