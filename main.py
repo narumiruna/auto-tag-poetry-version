@@ -9,16 +9,12 @@ from poetry.console.application import Application
 @click.argument("repo")
 def main(prefix, token, repo):
     version = Application().poetry.package.pretty_version
-    print("version:", version)
 
     version_tag = f"{prefix}{version}"
-    print("version_tag:", version_tag)
 
     if token is None:
         print("GITHUB_TOKEN not set, skipping tag creation")
         return
-
-    print(f"repo: {repo}")
 
     g = Github(token)
     repo = g.get_repo(repo)
