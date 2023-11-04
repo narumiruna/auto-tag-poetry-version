@@ -8,12 +8,15 @@ inputs:
   version-prefix:
     description: ""
     default: "v"
+# runs:
+#   using: "composite"
+#   steps:
+#     - run: |
+#         pip install poetry==${{ inputs.poetry-version }}
+#         pip install PyGithub
+#       shell: bash
+#     - run: python main.py
+#       shell: bash
 runs:
-  using: "composite"
-  steps:
-    - run: |
-        pip install poetry==${{ inputs.poetry-version }}
-        pip install PyGithub
-      shell: bash
-    - run: python main.py
-      shell: bash
+  using: docker
+  image: Dockerfile
