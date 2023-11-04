@@ -20,6 +20,9 @@ def main(prefix, token):
         return
 
     github_repo = os.getenv("GITHUB_REPOSITORY")
+    if github_repo is None:
+        print("GITHUB_REPOSITORY not set, skipping tag creation")
+        return
 
     g = Github(token)
     repo = g.get_repo(github_repo)
