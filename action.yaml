@@ -2,6 +2,9 @@
 name: "Auto Tag Version"
 description: ""
 inputs:
+  poetry-version:
+    description: ""
+    default: "1.6.1"
   version-prefix:
     description: ""
     default: "v"
@@ -12,9 +15,16 @@ inputs:
     description: ""
     required: true
 runs:
-  using: docker
-  image: Dockerfile
-  args:
-    - ${{ inputs.version-prefix }}
-    - ${{ inputs.github-token }}
-    - ${{ inputs.github-repository }}
+  using: "composite"
+  steps:
+    - run: pip install poetry==${{ inputs.poetry-version }}
+      shell: bash
+    - run: |
+        TAG=v$(poetry version -s)
+        if [ $(git tag -l "${TAG}") ]
+        then
+          echo "Tag ${TAG} already exists"
+        else
+          git tag ${TAG} && git push origin ${TAG}
+        fi
+      shell: bash
